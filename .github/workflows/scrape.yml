@@ -2,9 +2,10 @@ name: Nikkei Slack Notifier
 
 on:
   schedule:
-    - cron: '30 22 * * 0-4'  # JST 7:30 月〜金（UTC 22:30 日〜木）
-    - cron: '30 2 * * 1-5'   # JST 11:30 月〜金
-    - cron: '30 7 * * 1-5'   # JST 16:30 月〜金
+    # JST 6:00〜8:30 月〜金（UTC 21:00〜23:30 日〜木）
+    - cron: '0,30 21-23 * * 0-4'
+    # JST 9:00〜19:00 月〜金（UTC 0:00〜10:00 月〜金）
+    - cron: '0,30 0-10 * * 1-5'
   workflow_dispatch:
 
 jobs:
