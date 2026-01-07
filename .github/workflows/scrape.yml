@@ -2,9 +2,8 @@ name: Nikkei Slack Notifier
 
 on:
   schedule:
-    # 毎日 9:00, 12:00, 18:00 JST に実行
-    - cron: '0 0,3,9 * * *'
-  workflow_dispatch:  # 手動実行ボタン
+    - cron: '0 0,3,9 * * *'  # JST 9:00, 12:00, 18:00
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -28,7 +27,7 @@ jobs:
 
       - name: Run scraper
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WORKFLOW_URL: ${{ secrets.SLACK_WORKFLOW_URL }}
         run: python scrape.py
 
       - name: Commit cache
